@@ -11,6 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.contains;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
@@ -28,29 +29,30 @@ public class LibraryTest {
 
     @Before
     public void setup(){
-        printStream = new PrintStream(System.out);
+        printStream = mock(PrintStream.class);
         bookList= new ArrayList<Book>();
         book1 = new Book("The Hungry Caterpillar", "Eric Carle", 1969);
         book2 = new Book("Goodnight, Moon", "Margaret Wise Brown", 1947);
+        library = new Library(bookList, printStream);
 
 
     }
 
     @Test
     public void shouldPrintNothingWhenBookListIsEmpty() {
-        library = new Library(bookList);
+
         assertThat(library.listBooks(), is(""));
     }
 
     @Test
-    public void shouldPrintOneTitleWhenOneBookInBib() {
+    public void shouldPrintOneTitleWhenOneBookInLib() {
         bookList.add(book1);
         library = new Library(bookList);
         assertTrue(library.listBooks().contains(book1.getTitle()));
     }
 
     @Test
-    public void shouldPrintBothTitlesWhenTwoBooksAreInBib() {
+    public void shouldPrintBothTitlesWhenTwoBooksAreInLib() {
         bookList.add(book1);
         bookList.add(book2);
         library = new Library(bookList);
@@ -60,7 +62,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldPrintOneTitleAuthorAndYearWhenOneBookInBib() {
+    public void shouldPrintOneTitleAuthorAndYearWhenOneBookIsInLib() {
         bookList.add(book1);
         library = new Library(bookList);
         String strFormat = "%-30s %-30s %-30d%n";
@@ -69,7 +71,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldPrintTwoitleAuthorAndYearWhenTwoBookInBib() {
+    public void shouldPrintBothTitleAuthorAndYearWhenTwoBooksAreInLib() {
         bookList.add(book1);
         bookList.add(book2);
         library = new Library(bookList);

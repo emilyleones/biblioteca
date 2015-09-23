@@ -28,15 +28,21 @@ public class ApplicationTest {
     }
 
     @Test
-    public void shouldPrintWelcomeWhenStarted() {
+    public void shouldPrintWelcomeWhenStarting() {
         application.start();
         verify(printStream).println(contains("Welcome"));
     }
 
     @Test
-    public void shouldCallListBooksWhenStarted(){
+    public void shouldCallListBooksWhenStarting(){
         application.start();
         verify(library).listBooks();
+    }
+
+    @Test
+    public void shouldPrintMenuOptionsWhenStarting(){
+        application.start();
+        verify(printStream).println(contains("These are the menu options:\n1 - List Books"));
     }
 
 }
