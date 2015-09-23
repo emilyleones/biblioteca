@@ -16,7 +16,9 @@ public class Library {
     public String listBooks() {
         String bookListing = "";
         for (Book book : books) {
-           bookListing += book.getTitle() + "\n";
+            String strFormat = "%-30s %-30s %-30d%n";
+            String bookInfo = String.format(strFormat, book.getTitle(), book.getAuthor(), book.getYear());
+            bookListing += bookInfo;
         }
         return bookListing;
     }

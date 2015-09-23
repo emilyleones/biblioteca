@@ -33,11 +33,10 @@ public class ApplicationTest {
         verify(printStream).println(contains("Welcome"));
     }
 
-//    @Test
-//    public void shouldCallListBooksWhenStarted(){
-//        verify(library).listBooks();
-//    }
-
-
+    @Test
+    public void shouldCallListBooksWhenStarted(){
+        application.start();
+        verify(library).listBooks();
+    }
 
 }

@@ -59,14 +59,27 @@ public class LibraryTest {
 
     }
 
-//    @Test
-//    public void shouldPrintOneTitleAuthorAndYearWhenOneBookInBib() {
-//        String title = "The Hungry Caterpillar";
-//        String author = "Eric Carle";
-//        int year = 1969;
-//        library.addBook(title + "\t" + author + "\t" + year);
-//        library.listBooks(printStream);
-//        verify(printStream).println(contains(title));
-//    }
+    @Test
+    public void shouldPrintOneTitleAuthorAndYearWhenOneBookInBib() {
+        bookList.add(book1);
+        library = new Library(bookList);
+        String strFormat = "%-30s %-30s %-30d%n";
+        String book1Info = String.format(strFormat, book1.getTitle(), book1.getAuthor(), book1.getYear());
+        assertThat(library.listBooks(), is(book1Info));
+    }
+
+    @Test
+    public void shouldPrintTwoitleAuthorAndYearWhenTwoBookInBib() {
+        bookList.add(book1);
+        bookList.add(book2);
+        library = new Library(bookList);
+        String booksInfo = "";
+        String strFormat = "%-30s %-30s %-30d%n";
+        String book1Info = String.format(strFormat, book1.getTitle(), book1.getAuthor(), book1.getYear());
+        booksInfo += book1Info;
+        String book2Info = String.format(strFormat, book2.getTitle(), book2.getAuthor(), book2.getYear());
+        booksInfo += book2Info;
+        assertThat(library.listBooks(), is(booksInfo));
+    }
 
 }
