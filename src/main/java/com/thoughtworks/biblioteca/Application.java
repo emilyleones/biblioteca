@@ -8,18 +8,16 @@ import java.io.PrintStream;
 public class Application {
 
     private PrintStream printStream;
-    private Library library;
     private MainMenu mainMenu;
 
-    public Application(PrintStream printStream, Library library) {
+    public Application(PrintStream printStream, MainMenu mainMenu) {
         this.printStream = printStream;
-        this.library = library;
+        this.mainMenu = mainMenu;
     }
 
     public void start() {
         printStream.println("Welcome to Biblioteca!");
-        library.listBooks();
-
+        mainMenu.displayOptions();
     }
 
 

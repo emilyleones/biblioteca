@@ -11,7 +11,7 @@ public class MainMenu {
     private PrintStream printStream;
     private BufferedReader reader;
 
-    MainMenu(Library library, PrintStream printStream, BufferedReader reader){
+    MainMenu(Library library, PrintStream printStream){
         this.library = library;
         this.printStream = printStream;
         this.reader = reader;

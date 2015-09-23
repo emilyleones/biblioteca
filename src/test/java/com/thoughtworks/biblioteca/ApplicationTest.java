@@ -17,14 +17,14 @@ public class ApplicationTest {
 
     private Application application;
     private PrintStream printStream;
-    private Library library;
+    private MainMenu mainMenu;
 
 
     @Before
     public void setup() {
         printStream = mock(PrintStream.class);
-        library = mock(Library.class);
-        application = new Application(printStream, library);
+        mainMenu = mock(MainMenu.class);
+        application = new Application(printStream, mainMenu);
     }
 
     @Test
@@ -36,13 +36,9 @@ public class ApplicationTest {
     @Test
     public void shouldCallListBooksWhenStarting(){
         application.start();
-        verify(library).listBooks();
+        verify(mainMenu).displayOptions();
     }
 
-    @Test
-    public void shouldPrintMenuOptionsWhenStarting(){
-        application.start();
-        verify(printStream).println(contains("These are the menu options:\n1 - List Books"));
-    }
+
 
 }

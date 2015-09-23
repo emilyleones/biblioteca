@@ -26,7 +26,7 @@ public class MainMenuTest {
         printStream = mock(PrintStream.class);
         library = mock(Library.class);
         reader = mock(BufferedReader.class);
-        menu = new MainMenu(library, printStream, reader);
+        menu = new MainMenu(library, printStream);
     }
     @Test
     public void shouldDisplayOptionsWhenStarts() {
