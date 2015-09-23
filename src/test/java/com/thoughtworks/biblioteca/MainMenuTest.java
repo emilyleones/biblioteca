@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by eleones on 9/23/15.
@@ -26,14 +24,23 @@ public class MainMenuTest {
         printStream = mock(PrintStream.class);
         library = mock(Library.class);
         reader = mock(BufferedReader.class);
-        menu = new MainMenu(library, printStream);
+        menu = new MainMenu(library, printStream, reader);
     }
     @Test
-    public void shouldDisplayOptionsWhenStarts() {
+    public void shouldDisplayOptionsWhenStarts() throws IOException {
 
         menu.displayOptions();
 
         verify(printStream).println("Menu:\n1 - List Books");
+    }
+
+    @Test
+    public void shouldReadInputWhenDisplayingOptions() throws IOException {
+        when(reader.readLine()).thenReturn("1");
+
+        menu.displayOptions();
+
+        verify(reader).readLine();
     }
 
     @Test
@@ -45,4 +52,22 @@ public class MainMenuTest {
         verify(library).listBooks();
     }
 
+
+    @Test
+    public void shouldNotListBooksWhenOptionIsInvalid() throws IOException {
+        when(reader.readLine()).thenReturn("0");
+
+        menu.displayOptions();
+
+        verifyZeroInteractions(library);
+    }
+
+    @Test
+    public void shouldGiveErrorMessageWhenOptionIsInvalid() throws IOException {
+        when(reader.readLine()).thenReturn("0");
+
+        menu.displayOptions();
+
+        verify(printStream).println("Invalid option!");
+    }
 }

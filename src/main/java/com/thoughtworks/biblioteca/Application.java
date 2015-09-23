@@ -1,5 +1,6 @@
 package com.thoughtworks.biblioteca;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 /**
@@ -15,7 +16,7 @@ public class Application {
         this.mainMenu = mainMenu;
     }
 
-    public void start() {
+    public void start() throws IOException {
         printStream.println("Welcome to Biblioteca!");
         mainMenu.displayOptions();
     }

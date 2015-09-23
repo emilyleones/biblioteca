@@ -3,6 +3,7 @@ package com.thoughtworks.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.mockito.Matchers.contains;
@@ -28,13 +29,13 @@ public class ApplicationTest {
     }
 
     @Test
-    public void shouldPrintWelcomeWhenStarting() {
+    public void shouldPrintWelcomeWhenStarting() throws IOException {
         application.start();
         verify(printStream).println(contains("Welcome"));
     }
 
     @Test
-    public void shouldCallListBooksWhenStarting(){
+    public void shouldCallListBooksWhenStarting() throws IOException {
         application.start();
         verify(mainMenu).displayOptions();
     }
