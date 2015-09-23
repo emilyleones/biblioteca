@@ -9,18 +9,16 @@ public class Application {
 
     private PrintStream printStream;
     private Library library;
-    private MainMenu main;
+    private MainMenu mainMenu;
 
     public Application(PrintStream printStream, Library library) {
         this.printStream = printStream;
         this.library = library;
-        this.main = new MainMenu();
     }
 
     public void start() {
         printStream.println("Welcome to Biblioteca!");
-        printStream.println(library.listBooks());
-        printStream.println(main.getMenuOptions());
+        library.listBooks();
 
     }
 

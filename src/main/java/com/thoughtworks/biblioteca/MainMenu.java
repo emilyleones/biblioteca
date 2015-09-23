@@ -1,16 +1,24 @@
 package com.thoughtworks.biblioteca;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 /**
  * Created by eleones on 9/23/15.
  */
 public class MainMenu {
-    String menuOptions;
+    private Library library;
+    private PrintStream printStream;
+    private BufferedReader reader;
 
-    MainMenu(){
-        menuOptions = "These are the menu options:\n1 - List Books";
+    MainMenu(Library library, PrintStream printStream, BufferedReader reader){
+        this.library = library;
+        this.printStream = printStream;
+        this.reader = reader;
     }
 
-    public String getMenuOptions() {
-        return menuOptions;
+    public void displayOptions() {
+        printStream.println("Menu:\n1 - List Books");
+        library.listBooks();
     }
 }

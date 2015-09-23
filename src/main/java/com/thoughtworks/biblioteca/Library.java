@@ -8,19 +8,17 @@ import java.util.List;
  */
 public class Library {
     private List<Book> books;
+    private PrintStream printStream;
 
-    public Library(List<Book> books){
+    public Library(List<Book> books, PrintStream printStream){
         this.books = books;
+        this.printStream = printStream;
     }
 
-    public String listBooks() {
-        String bookListing = "";
+    public void listBooks() {
         for (Book book : books) {
-            String strFormat = "%-30s %-30s %-30d%n";
-            String bookInfo = String.format(strFormat, book.getTitle(), book.getAuthor(), book.getYear());
-            bookListing += bookInfo;
+            book.printDetails();
         }
-        return bookListing;
     }
 
 //    public void addBook(String title, String author, int year) {
