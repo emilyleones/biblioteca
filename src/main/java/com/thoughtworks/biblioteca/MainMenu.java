@@ -24,10 +24,11 @@ public class MainMenu {
     }
 
     private void readAndRunInput() throws IOException {
-        String option = reader.readLine();
+        String option = "";
         while(options.notQuitting(option)){
-            options.runSelection(option);
             option = reader.readLine();
+            options.runSelection(option);
+
         }
     }
 
