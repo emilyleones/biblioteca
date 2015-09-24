@@ -28,24 +28,28 @@ public class MainMenuTest {
     }
     @Test
     public void shouldDisplayOptionsWhenStarts() throws IOException {
+        when(reader.readLine()).thenReturn("0","Q");
 
         menu.displayOptions();
 
-        verify(printStream).println("Menu:\n1 - List Books");
+        verify(printStream).println("Menu:\n" +
+                "1 - List Books\n" +
+                "Q - Quit");
     }
 
     @Test
     public void shouldReadInputWhenDisplayingOptions() throws IOException {
-        when(reader.readLine()).thenReturn("1");
+        when(reader.readLine()).thenReturn("Q");
 
         menu.displayOptions();
 
         verify(reader).readLine();
+
     }
 
     @Test
     public void shouldListBooksWhenOptionIsOne() throws IOException {
-        when(reader.readLine()).thenReturn("1");
+        when(reader.readLine()).thenReturn("1","Q");
 
         menu.displayOptions();
 
@@ -55,7 +59,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldNotListBooksWhenOptionIsInvalid() throws IOException {
-        when(reader.readLine()).thenReturn("0");
+        when(reader.readLine()).thenReturn("0","Q");
 
         menu.displayOptions();
 
@@ -64,10 +68,28 @@ public class MainMenuTest {
 
     @Test
     public void shouldGiveErrorMessageWhenOptionIsInvalid() throws IOException {
-        when(reader.readLine()).thenReturn("0");
+        when(reader.readLine()).thenReturn("afd","Q");
 
         menu.displayOptions();
 
         verify(printStream).println("Invalid option!");
+    }
+
+    @Test
+    public void shouldQuitWhenQuitOptionSelected() throws IOException {
+        when(reader.readLine()).thenReturn("Q");
+
+        menu.displayOptions();
+
+        verify(printStream).println("Application has ended.");
+    }
+
+    @Test
+    public void shouldContinueToAcceptInputWhenQuitHasNotBeenSelected () throws IOException{
+        when(reader.readLine()).thenReturn("0","1","Q");
+
+        menu.displayOptions();
+
+        verify(printStream).println("Application has ended.");
     }
 }

@@ -19,10 +19,16 @@ public class MainMenu {
     }
 
     public void displayOptions() throws IOException {
-        printStream.println("Menu:\n1 - List Books");
+        printStream.println("Menu:\n1 - List Books\nQ - Quit");
         String option = reader.readLine();
-        if (option.equals("1")) {
-            library.listBooks();
+        while(!option.toUpperCase().equals("Q")){
+            if (option.equals("1")) {
+                library.listBooks();
+            } else {
+                printStream.println("Invalid option!");
+            }
+            option = reader.readLine();
         }
+        printStream.println("Application has ended.");
     }
 }

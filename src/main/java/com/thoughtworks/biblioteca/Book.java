@@ -18,18 +18,6 @@ public class Book {
         this.printStream =printStream;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
     public void printDetails() {
         String bookDetails = String.format("%-30s| %-30s| %s", title, author, year);
         printStream.println(bookDetails);
