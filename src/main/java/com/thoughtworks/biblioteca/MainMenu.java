@@ -20,8 +20,12 @@ public class MainMenu {
 
     public void displayOptions() throws IOException {
         printStream.println("Menu:\n1 - List Books\nQ - Quit");
+        readAndRunInput();
+    }
+
+    private void readAndRunInput() throws IOException {
         String option = reader.readLine();
-        while(notQuitting(option)){
+        while(options.notQuitting(option)){
             options.runSelection(option);
             option = reader.readLine();
         }
