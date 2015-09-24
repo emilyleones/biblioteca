@@ -18,7 +18,8 @@ public class Main {
         bookList.add(GoodnightMoon);
 
         Library library = new Library(bookList, System.out);
-        MainMenu mainMenu = new MainMenu(library, System.out, new BufferedReader(new InputStreamReader(System.in)));
+        Options options = new Options(library, System.out);
+        MainMenu mainMenu = new MainMenu(System.out, new BufferedReader(new InputStreamReader(System.in)), options);
         Application application = new Application(System.out, mainMenu);
         application.start();
     }

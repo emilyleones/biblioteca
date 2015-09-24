@@ -15,7 +15,6 @@ import static org.mockito.Mockito.*;
  */
 public class MainMenuTest {
     private PrintStream printStream;
-    private Library library;
     private MainMenu menu;
     private BufferedReader reader;
     private Options options;
@@ -23,9 +22,9 @@ public class MainMenuTest {
     @Before
     public void setup() {
         printStream = mock(PrintStream.class);
-        library = mock(Library.class);
         reader = mock(BufferedReader.class);
-        menu = new MainMenu(library, printStream, reader);
+        options = mock(Options.class);
+        menu = new MainMenu(printStream, reader, options);
     }
     @Test
     public void shouldDisplayOptionsWhenStarts() throws IOException {
@@ -49,57 +48,9 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldListBooksWhenOptionIsOne() throws IOException {
-        when(reader.readLine()).thenReturn("1","Q");
-
-        menu.displayOptions();
-
-        verify(library).listBooks();
-    }
-
-
-    @Test
-    public void shouldNotListBooksWhenOptionIsInvalid() throws IOException {
-        when(reader.readLine()).thenReturn("0","Q");
-
-        menu.displayOptions();
-
-        verifyZeroInteractions(library);
-    }
-
-    @Test
-    public void shouldGiveErrorMessageWhenOptionIsInvalid() throws IOException {
-        when(reader.readLine()).thenReturn("afd","Q");
-
-        menu.displayOptions();
-
-        verify(printStream).println("Invalid option!");
-    }
-
-    @Test
-    public void shouldQuitWhenQuitOptionSelected() throws IOException {
-        when(reader.readLine()).thenReturn("Q");
-
-        menu.displayOptions();
-
-        verify(printStream).println("Application has ended.");
-    }
-
-    @Test
-    public void shouldContinueToAcceptInputWhenQuitHasNotBeenSelected () throws IOException{
-        when(reader.readLine()).thenReturn("0","1","Q");
-
-        menu.displayOptions();
-
-        verify(printStream).println("Application has ended.");
-    }
-
-    @Test
     public void shouldCallOptionWhenOptionIsInputted() throws IOException {
-        when(reader.readLine()).thenReturn("Q");
-
+        when(reader.readLine()).thenReturn("1","Q");
         menu.displayOptions();
-
-        verify(options).chooseSelection("Q");
+        verify(options).runSelection("1");
     }
 }
