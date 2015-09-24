@@ -18,6 +18,7 @@ public class MainMenuTest {
     private Library library;
     private MainMenu menu;
     private BufferedReader reader;
+    private Options options;
 
     @Before
     public void setup() {
@@ -91,5 +92,14 @@ public class MainMenuTest {
         menu.displayOptions();
 
         verify(printStream).println("Application has ended.");
+    }
+
+    @Test
+    public void shouldCallOptionWhenOptionIsInputted() throws IOException {
+        when(reader.readLine()).thenReturn("Q");
+
+        menu.displayOptions();
+
+        verify(options).chooseSelection("Q");
     }
 }
