@@ -16,6 +16,7 @@ public class Options {
         lastOption = "";
     }
 
+    //Add command map instead of if else
     public void runSelection(String choice) {
         lastOption = choice;
         if (choice.equals("1")) {
