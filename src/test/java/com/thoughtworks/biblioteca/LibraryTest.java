@@ -57,5 +57,13 @@ public class LibraryTest {
         verifyNoMoreInteractions(book);
     }
 
+    @Test
+    public void shouldCheckOutBookWhenBookIsBeingCheckedOut() {
+        library.checkOut(1);
+
+        verify(book).checkOut();
+    }
+
+
 
 }

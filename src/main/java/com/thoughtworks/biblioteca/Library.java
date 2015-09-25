@@ -22,7 +22,9 @@ public class Library {
         }
     }
 
-    public void checkOut(int bookIndex) {
+    public void checkOut(int userInputtedBookNumber) {
+        int bookIndex = userInputtedBookNumber - 1;
+        books.get(bookIndex).checkOut();
     }
 
 //    public void addBook(String title, String author, int year) {
