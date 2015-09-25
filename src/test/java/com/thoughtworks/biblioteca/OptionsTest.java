@@ -1,11 +1,12 @@
 package com.thoughtworks.biblioteca;
 
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
@@ -19,18 +20,27 @@ public class OptionsTest {
     private Library library;
     private Options options;
     private PrintStream printStream;
+    private Map<String, Command> commandMap;
+    private ShowBooksCommand showBooksMock;
+    private QuitCommand quitMock;
 
     @Before
     public void setUp(){
         printStream = mock(PrintStream.class);
         library = mock(Library.class);
-        options = new Options(library,printStream);
+        commandMap = new HashMap<>();
+        showBooksMock = mock(ShowBooksCommand.class);
+        quitMock = mock(QuitCommand.class);
+        commandMap.put("1", showBooksMock);
+        commandMap.put("Q", quitMock);
+        options = new Options(library,printStream, commandMap);
     }
 
     @Test
     public void shouldListBooksWhenOptionIsOne() {
         options.runSelection("1");
-        verify(library).listBooks();
+
+        verify(showBooksMock).execute();
     }
 
     @Test

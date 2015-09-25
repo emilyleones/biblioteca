@@ -43,11 +43,11 @@ public class LibraryTest {
         verify(book).printDetails();
     }
 
-    @Test
-    public void shouldRemoveBookAvailabilityWhenBookIsCheckedOut() {
-        library.checkOut(1);
-        assertFalse(book1.isAvailable());
-    }
+//    @Test
+//    public void shouldRemoveBookAvailabilityWhenBookIsCheckedOut() {
+//        library.checkOut(1);
+//        assertFalse(book1.isAvailable());
+//    }
 
 
 }

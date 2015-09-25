@@ -13,13 +13,11 @@ public class Options {
     private String lastOption;
     private Map<String, Command> commandMap;
 
-    public Options(Library library, PrintStream printStream) {
+    public Options(Library library, PrintStream printStream, Map<String, Command> commandMap) {
         this.library = library;
         this.printStream = printStream;
         lastOption = "";
-        commandMap = new HashMap<>();
-        commandMap.put("1", new ShowBooksCommand(library));
-        commandMap.put("Q", new QuitCommand());
+        this.commandMap = commandMap;
     }
 
     //Add command map instead of if else
