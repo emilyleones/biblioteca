@@ -10,8 +10,7 @@ import static junit.framework.TestCase.assertFalse;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -48,6 +47,15 @@ public class LibraryTest {
 //        library.checkOut(1);
 //        assertFalse(book1.isAvailable());
 //    }
+
+    @Test
+    public void shouldNotListBookWhenBookIsNotAvailable(){
+        when(book.isAvailable()).thenReturn(false);
+        library.listBooks();
+
+        verify(book).isAvailable();
+        verifyNoMoreInteractions(book);
+    }
 
 
 }

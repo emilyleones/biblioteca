@@ -15,7 +15,10 @@ public class Library {
 
     public void listBooks() {
         for (Book book : books) {
-            book.printDetails();
+            if(book.isAvailable())
+            {
+                book.printDetails();
+            }
         }
     }
 
