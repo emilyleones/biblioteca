@@ -42,7 +42,7 @@ public class MainMenuTest {
     @Test
     public void shouldReadInputWhenDisplayingOptions() throws IOException {
         when(reader.readLine()).thenReturn("Q");
-        when(options.notQuitting("")).thenReturn(true);
+        when(options.timeToQuit()).thenReturn(false);
 
         menu.displayOptions();
 
@@ -52,7 +52,7 @@ public class MainMenuTest {
 
     @Test
     public void shouldCallOptionWhenOptionIsInputted() throws IOException {
-        when(options.notQuitting("")).thenReturn(true);
+        when(options.timeToQuit()).thenReturn(false);
         when(reader.readLine()).thenReturn("1","Q");
         menu.displayOptions();
         verify(options).runSelection("1");

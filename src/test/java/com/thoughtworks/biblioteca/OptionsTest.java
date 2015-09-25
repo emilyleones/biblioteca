@@ -40,16 +40,6 @@ public class OptionsTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenNotQuitting() {
-        assertFalse(options.notQuitting("Q"));
-    }
-
-    @Test
-    public void shouldReturnTrueWhenNotQuitting() {
-        assertTrue(options.notQuitting("1"));
-    }
-
-    @Test
     public void shouldReturnTrueWhenLastChosenOptionWasQuit()
     {
         options.runSelection("Q");
