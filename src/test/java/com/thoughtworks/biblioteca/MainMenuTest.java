@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -40,6 +42,7 @@ public class MainMenuTest {
     @Test
     public void shouldReadInputWhenDisplayingOptions() throws IOException {
         when(reader.readLine()).thenReturn("Q");
+        when(options.notQuitting("")).thenReturn(true);
 
         menu.displayOptions();
 
@@ -49,8 +52,21 @@ public class MainMenuTest {
 
     @Test
     public void shouldCallOptionWhenOptionIsInputted() throws IOException {
+        when(options.notQuitting("")).thenReturn(true);
         when(reader.readLine()).thenReturn("1","Q");
         menu.displayOptions();
         verify(options).runSelection("1");
+    }
+
+    @Test
+    public void shouldReturnTrueWhenNotQuitting(){
+
+        assertTrue(menu.isNotQuitting());
+    }
+
+    @Test
+    public void shouldReturnFalseWhenQuitting(){
+
+        assertFalse(menu.isNotQuitting());
     }
 }

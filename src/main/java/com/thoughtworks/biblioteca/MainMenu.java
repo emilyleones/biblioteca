@@ -28,11 +28,14 @@ public class MainMenu {
         while(options.notQuitting(option)){
             option = reader.readLine();
             options.runSelection(option);
-
         }
     }
 
-    private boolean notQuitting(String choice) {
-        return !choice.toUpperCase().equals("Q");
+    public boolean isNotQuitting() {
+        return userInput.notQuitting();
     }
+
+//    private boolean notQuitting(String choice) {
+//        return !choice.toUpperCase().equals("Q");
+//    }
 }

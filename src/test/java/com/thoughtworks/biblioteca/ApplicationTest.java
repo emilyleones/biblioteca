@@ -1,14 +1,14 @@
 package com.thoughtworks.biblioteca;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -38,6 +38,24 @@ public class ApplicationTest {
     public void shouldCallListBooksWhenStarting() throws IOException {
         application.start();
         verify(mainMenu).displayOptions();
+    }
+
+    @Test
+    public void shouldRunMainMenuWhenNotQuitting() throws IOException {
+        when(mainMenu.isNotQuitting()).thenReturn(true, false);
+        application.start();
+
+        verify(mainMenu).displayOptions();
+    }
+
+    @Test
+    public void shouldQuitApplicationWhenMainMenuIsQuitting() throws IOException {
+        when(mainMenu.isNotQuitting()).thenReturn(false);
+
+        application.start();
+
+        verify(mainMenu).isNotQuitting();
+        verifyNoMoreInteractions(mainMenu);
     }
 
 

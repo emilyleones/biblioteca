@@ -25,4 +25,8 @@ public class Options {
     public boolean notQuitting(String choice) {
         return !choice.toUpperCase().equals("Q");
     }
+
+    public boolean notQuitting() {
+        return false;
+    }
 }
