@@ -20,7 +20,7 @@ public class BookTest {
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
-        book = new Book("The Hungry Caterpillar", "Eric Carle", "1969", printStream);
+        book = new Book("The Hungry Caterpillar", "Eric Carle", "1969", 0, printStream);
     }
 
     @Test
