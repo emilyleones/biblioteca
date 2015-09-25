@@ -12,7 +12,7 @@ public class MainMenu {
     private BufferedReader reader;
     private Options options;
 
-    MainMenu(PrintStream printStream, BufferedReader bufferedReader, Options options){
+    MainMenu(PrintStream printStream, BufferedReader bufferedReader, Options options) {
         this.printStream = printStream;
         this.reader = bufferedReader;
         this.options = options;
@@ -24,11 +24,8 @@ public class MainMenu {
     }
 
     private void readAndRunInput() throws IOException {
-        String option = "";
-        while(options.notQuitting(option)){
-            option = reader.readLine();
-            options.runSelection(option);
-        }
+        String option = reader.readLine();
+        options.runSelection(option);
     }
 
     public boolean isRunning() {
