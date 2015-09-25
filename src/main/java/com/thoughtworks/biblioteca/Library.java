@@ -19,6 +19,9 @@ public class Library {
         }
     }
 
+    public void checkOut(int bookIndex) {
+    }
+
 //    public void addBook(String title, String author, int year) {
 //        Book book = new Book(title, author, year);
 //        books.add(book);

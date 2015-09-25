@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -40,6 +41,12 @@ public class LibraryTest {
     public void shouldPrintBookDetailsWhenListingBooks() {
         library.listBooks();
         verify(book).printDetails();
+    }
+
+    @Test
+    public void shouldRemoveBookAvailabilityWhenBookIsCheckedOut() {
+        library.checkOut(1);
+        assertFalse(book1.isAvailable());
     }
 
 
