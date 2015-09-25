@@ -31,8 +31,8 @@ public class MainMenu {
         }
     }
 
-    public boolean isNotQuitting() {
-        return userInput.notQuitting();
+    public boolean isRunning() {
+        return !options.timeToQuit();
     }
 
 //    private boolean notQuitting(String choice) {

@@ -1,7 +1,6 @@
 package com.thoughtworks.biblioteca;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -26,6 +25,7 @@ public class ApplicationTest {
         printStream = mock(PrintStream.class);
         mainMenu = mock(MainMenu.class);
         application = new Application(printStream, mainMenu);
+        when(mainMenu.isRunning()).thenReturn(true, false);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ApplicationTest {
 
     @Test
     public void shouldRunMainMenuWhenNotQuitting() throws IOException {
-        when(mainMenu.isNotQuitting()).thenReturn(true, false);
+        when(mainMenu.isRunning()).thenReturn(true, false);
         application.start();
 
         verify(mainMenu).displayOptions();
@@ -50,11 +50,11 @@ public class ApplicationTest {
 
     @Test
     public void shouldQuitApplicationWhenMainMenuIsQuitting() throws IOException {
-        when(mainMenu.isNotQuitting()).thenReturn(false);
+        when(mainMenu.isRunning()).thenReturn(false);
 
         application.start();
 
-        verify(mainMenu).isNotQuitting();
+        verify(mainMenu).isRunning();
         verifyNoMoreInteractions(mainMenu);
     }
 

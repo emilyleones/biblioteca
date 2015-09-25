@@ -1,5 +1,6 @@
 package com.thoughtworks.biblioteca;
 
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,6 +47,21 @@ public class OptionsTest {
     @Test
     public void shouldReturnTrueWhenNotQuitting() {
         assertTrue(options.notQuitting("1"));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenLastChosenOptionWasQuit()
+    {
+        options.runSelection("Q");
+
+        assertTrue(options.timeToQuit());
+    }
+
+    @Test
+    public void shouldReturnFalseWhenLastChosenOptionWasNotQuit(){
+        options.runSelection("1");
+
+        assertFalse(options.timeToQuit());
     }
 
 }

@@ -61,12 +61,13 @@ public class MainMenuTest {
     @Test
     public void shouldReturnTrueWhenNotQuitting(){
 
-        assertTrue(menu.isNotQuitting());
+        assertTrue(menu.isRunning());
     }
 
     @Test
     public void shouldReturnFalseWhenQuitting(){
+        when(options.timeToQuit()).thenReturn(true);
 
-        assertFalse(menu.isNotQuitting());
+        assertFalse(menu.isRunning());
     }
 }

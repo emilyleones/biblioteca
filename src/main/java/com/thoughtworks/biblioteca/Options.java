@@ -8,13 +8,16 @@ import java.io.PrintStream;
 public class Options {
     private Library library;
     private PrintStream printStream;
+    private String lastOption;
 
     public Options(Library library, PrintStream printStream) {
         this.library = library;
         this.printStream = printStream;
+        lastOption = "";
     }
 
     public void runSelection(String choice) {
+        lastOption = choice;
         if (choice.equals("1")) {
             library.listBooks();
         } else {
@@ -26,7 +29,7 @@ public class Options {
         return !choice.toUpperCase().equals("Q");
     }
 
-    public boolean notQuitting() {
-        return false;
+    public boolean timeToQuit() {
+        return lastOption.toUpperCase().equals("Q");
     }
 }
