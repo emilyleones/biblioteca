@@ -1,6 +1,5 @@
 package com.thoughtworks.biblioteca;
 
-import java.io.PrintStream;
 import java.util.List;
 
 /**
