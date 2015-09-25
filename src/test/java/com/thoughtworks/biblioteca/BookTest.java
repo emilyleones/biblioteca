@@ -28,7 +28,7 @@ public class BookTest {
 
         book.printDetails();
 
-        verify(printStream).println("The Hungry Caterpillar        | Eric Carle                    | 1969");
+        verify(printStream).println("1    |The Hungry Caterpillar        | Eric Carle                    | 1969");
     }
 
     @Test

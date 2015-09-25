@@ -34,9 +34,7 @@ public class MainMenuTest {
 
         menu.displayOptions();
 
-        verify(printStream).println("\nMenu:\n" +
-                "1 - List Books\n" +
-                "Q - Quit");
+        verify(printStream).println("\nMenu:\n1 - List Books\n2 - Check Out Book\nQ - Quit");
     }
 
     @Test

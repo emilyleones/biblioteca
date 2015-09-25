@@ -38,6 +38,7 @@ public class LibraryTest {
 
     @Test
     public void shouldPrintBookDetailsWhenListingBooks() {
+        when(book.isAvailable()).thenReturn(true);
         library.listBooks();
         verify(book).printDetails();
     }
