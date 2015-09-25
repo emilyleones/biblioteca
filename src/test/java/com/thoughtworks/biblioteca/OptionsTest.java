@@ -40,8 +40,7 @@ public class OptionsTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenLastChosenOptionWasQuit()
-    {
+    public void shouldReturnTrueWhenLastChosenOptionWasQuit() {
         options.runSelection("Q");
 
         assertTrue(options.timeToQuit());

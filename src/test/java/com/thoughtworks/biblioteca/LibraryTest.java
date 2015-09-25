@@ -29,7 +29,7 @@ public class LibraryTest {
         bookList = new ArrayList();
         book = mock(Book.class);
         bookList.add(book);
-        library = new Library(bookList, printStream);
+        library = new Library(bookList);
 
 //        book1 = new Book("The Hungry Caterpillar", "Eric Carle", "1969", printStream);
 //        book2 = new Book("Goodnight, Moon", "Margaret Wise Brown", "1947", printStream);

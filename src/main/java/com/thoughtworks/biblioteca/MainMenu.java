@@ -19,7 +19,7 @@ public class MainMenu {
     }
 
     public void displayOptions() throws IOException {
-        printStream.println("Menu:\n1 - List Books\nQ - Quit");
+        printStream.println("\nMenu:\n1 - List Books\nQ - Quit");
         readAndRunInput();
     }
 

@@ -17,7 +17,7 @@ public class Main {
         Book GoodnightMoon = new Book("Goodnight, Moon", "Margaret Wise Brown", "1947", System.out);
         bookList.add(GoodnightMoon);
 
-        Library library = new Library(bookList, System.out);
+        Library library = new Library(bookList);
         Options options = new Options(library, System.out);
         MainMenu mainMenu = new MainMenu(System.out, new BufferedReader(new InputStreamReader(System.in)), options);
         Application application = new Application(System.out, mainMenu);

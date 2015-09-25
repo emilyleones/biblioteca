@@ -8,11 +8,9 @@ import java.util.List;
  */
 public class Library {
     private List<Book> books;
-    private PrintStream printStream;
 
-    public Library(List<Book> books, PrintStream printStream){
+    public Library(List<Book> books){
         this.books = books;
-        this.printStream = printStream;
     }
 
     public void listBooks() {
