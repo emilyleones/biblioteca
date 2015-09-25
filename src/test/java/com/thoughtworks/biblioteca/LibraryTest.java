@@ -18,14 +18,12 @@ import static org.mockito.Mockito.*;
  */
 public class LibraryTest {
     private Library library;
-    private PrintStream printStream;
     private ArrayList<Book> bookList;
     private Book book;
 
 
     @Before
     public void setup(){
-        printStream = mock(PrintStream.class);
         bookList = new ArrayList();
         book = mock(Book.class);
         bookList.add(book);
@@ -64,7 +62,5 @@ public class LibraryTest {
 
         verify(book).checkOut();
     }
-
-
 
 }

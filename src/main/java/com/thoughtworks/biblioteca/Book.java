@@ -29,6 +29,7 @@ public class Book {
 
     public void checkOut() {
         isAvailable = false;
+        printStream.println("Thank you! Enjoy the book");
     }
 
     public boolean isAvailable() {

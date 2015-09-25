@@ -37,4 +37,11 @@ public class BookTest {
 
         assertFalse(book.isAvailable());
     }
+
+    @Test
+    public void shouldPrintSuccessfulCheckOutMessageWhenBookIsSuccessfullyCheckedOut () {
+        book.checkOut();
+
+        verify(printStream).println("Thank you! Enjoy the book");
+    }
 }
